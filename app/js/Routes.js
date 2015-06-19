@@ -6,20 +6,18 @@ var Route         = Router.Route;
 var NotFoundRoute = Router.NotFoundRoute;
 var DefaultRoute  = Router.DefaultRoute;
 
-var App           = require('./App');
-var HomePage      = require('./pages/HomePage');
-var SearchPage    = require('./pages/SearchPage');
-var NotFoundPage  = require('./pages/NotFoundPage');
+var App           = require('./app');
+var Start      = require('./components/start');
+var NotFound  = require('./components/not-found');
 
 module.exports = (
   <Route handler={App} path='/'>
 
-    <DefaultRoute handler={HomePage} />
+    <DefaultRoute handler={Start} />
 
-    <Route name='Home' path='/' handler={HomePage} />
-    <Route name='Search' path='/search' handler={SearchPage} />
+    <Route name='Start' path='/' handler={Start} />
 
-    <NotFoundRoute handler={NotFoundPage} />
+    <NotFoundRoute handler={NotFound} />
 
   </Route>
 );

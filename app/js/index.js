@@ -3,7 +3,7 @@
 var React  = require('react/addons');
 var Router = require('react-router');
 
-var routes = require('./Routes');
+var routes = require('./routes');
 
 if ( process.env.NODE_ENV !== 'production' ) {
   // Enable React devtools
