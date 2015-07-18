@@ -4,8 +4,8 @@ var React              = require('react/addons');
 var Reflux             = require('reflux');
 var RouteHandler       = require('react-router').RouteHandler;
 
-var Header             = require('./components/header');
-var Footer             = require('./components/footer');
+var Header             = require('./page/header');
+var Footer             = require('./page/footer');
 
 var App = React.createClass({
 

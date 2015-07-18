@@ -7,8 +7,8 @@ var NotFoundRoute = Router.NotFoundRoute;
 var DefaultRoute  = Router.DefaultRoute;
 
 var App           = require('./app');
-var Start      = require('./components/start');
-var NotFound  = require('./components/not-found');
+var Start         = require('./page/start');
+var NotFound      = require('./page/not-found');
 
 module.exports = (
   <Route handler={App} path='/'>
