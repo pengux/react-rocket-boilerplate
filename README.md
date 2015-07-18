@@ -41,21 +41,21 @@ ReactJS is a "declarative, efficient, and flexible JavaScript library for buildi
 The ReactJS files are all located within `/app/js`, structured in the following manner:
 
 ```
-/components
-  - Footer.js (Simple, static footer component rendered on all pages.)
-  - Header.js (Simple, static header component rendered on all pages.)
-/mixins
-  - AuthenticatedRouteMixin.js (Example mixin that can be used to prevent users from accessing certain pages when not signed in.)
-/pages
-  - HomePage.js (Example home page, serving as the default route.)
-  - NotFoundPage.js (Displayed any time the user requests a non-existent route.)
-  - SearchPage.js (Example search page to demonstrate navigation and individual pages.)
+/page
+  - footer.js (Simple, static footer component rendered on all pages.)
+  - header.js (Simple, static header component rendered on all pages.)
+  - not-found.js (404 page for non existing routes)
+  - start.js (Start page of application, contains header, footer and todo form and list)
+/todo
+  - actions.js (Actions for todo module)
+  - form.js (A simple form to add todos)
+  - list.js (List of todos)
+  - store.js (Reflux store for todos)
 /utils
-  - APIUtils.js (General wrappers for API interaction via Superagent.)
-  - AuthAPI.js (Example functions for user authorization via a remote API.)
-App.js (The main container component, rendered to the DOM and then responsible for rendering all pages.)
+  - api-utils.js (General wrappers for API interaction via Superagent.)
+app.js (The main container component, rendered to the DOM and then responsible for rendering all pages.)
 index.js (The main javascript file watched by Browserify, responsible for requiring the app and running the router.)
-Routes.js (Defines the routing structure, along with each individual route path and handler.)
+routes.js (Defines the routing structure, along with each individual route path and handler.)
 ```
 
 Each module you add to your project should be placed in the appropriate directory, and required in the necessary files. Once required, they will be automatically detected and compiled by Browserify (discussed later).
