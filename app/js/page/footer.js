@@ -1,19 +1,13 @@
-'use strict';
+import React from 'react';
 
-var React = require('react/addons');
+export default React.createClass({
 
-var Footer = React.createClass({
-
-  render: function() {
+  render() {
     return (
       <footer>
-
         Footer
-
       </footer>
     );
   }
 
 });
-
-module.exports = Footer;

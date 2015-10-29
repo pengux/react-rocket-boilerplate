@@ -1,11 +1,8 @@
-'use strict';
+import Reflux from 'reflux';
 
-var Reflux = require('reflux');
-
-var TodoActions = Reflux.createActions([
+export default Reflux.createActions([
 	'create',
 	'list',
 	'del'
 ]);
 
-module.exports = TodoActions;

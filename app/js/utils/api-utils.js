@@ -1,22 +1,19 @@
-'use strict';
+import {camelizeKeys} from 'humps';
+import Request from 'superagent';
+import When from 'when';
 
-var humps        = require('humps');
-var camelizeKeys = humps.camelizeKeys;
-var request      = require('superagent');
-var when         = require('when');
-
-var APIUtils = {
+export default {
 
   root: '//localhost:3000/api/',
 
-  normalizeResponse: function(response) {
+  normalizeResponse(response) {
     return camelizeKeys(response.body);
   },
 
-  get: function(path) {
-    var deferred = when.defer();
+  get(path) {
+    var deferred = When.defer();
 
-    request.get(this.root + path)
+    Request.get(this.root + path)
     .withCredentials()
     .end(function(res) {
       if ( !res.ok ) {
@@ -29,10 +26,10 @@ var APIUtils = {
     return deferred.promise;
   },
 
-  post: function(path, body) {
-    var deferred = when.defer();
+  post(path, body) {
+    var deferred = When.defer();
 
-    request.post(this.root + path, body)
+    Request.post(this.root + path, body)
     .withCredentials()
     .end(function(res) {
       if ( !res.ok ) {
@@ -45,10 +42,10 @@ var APIUtils = {
     return deferred.promise;
   },
 
-  patch: function(path, body) {
-    var deferred = when.defer();
+  patch(path, body) {
+    var deferred = When.defer();
 
-    request.patch(this.root + path, body)
+    Request.patch(this.root + path, body)
     .withCredentials()
     .end(function(res) {
       if ( !res.ok ) {
@@ -61,10 +58,10 @@ var APIUtils = {
     return deferred.promise;
   },
 
-  put: function(path, body) {
-    var deferred = when.defer();
+  put(path, body) {
+    var deferred = When.defer();
 
-    request.put(this.root + path, body)
+    Request.put(this.root + path, body)
     .withCredentials()
     .end(function(res) {
       if ( !res.ok ) {
@@ -77,10 +74,10 @@ var APIUtils = {
     return deferred.promise;
   },
 
-  del: function(path) {
-    var deferred = when.defer();
+  del(path) {
+    var deferred = When.defer();
 
-    request.del(this.root + path)
+    Request.del(this.root + path)
     .withCredentials()
     .end(function(res) {
       if ( !res.ok ) {
@@ -94,5 +91,3 @@ var APIUtils = {
   }
 
 };
-
-module.exports = APIUtils;

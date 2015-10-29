@@ -1,29 +1,22 @@
-'use strict';
+import React from 'react';
+import Reflux from 'reflux';
+import Router from 'react-router';
+import Header from './page/header';
+import Footer from './page/footer';
 
-var React              = require('react/addons');
-var Reflux             = require('reflux');
-var RouteHandler       = require('react-router').RouteHandler;
-
-var Header             = require('./page/header');
-var Footer             = require('./page/footer');
-
-var App = React.createClass({
+export default React.createClass({
 
   mixins: [Reflux.ListenerMixin],
 
-  componentWillMount: function() {
+  componentWillMount() {
     console.log('About to mount App');
   },
 
-  render: function() {
+  render() {
     return (
       <div>
-
         <Header />
-
-        <RouteHandler params={this.props.params}
-                      query={this.props.query} />
-
+        {React.cloneElement(this.props.children, {query: this.props.query})}
         <Footer />
 
       </div>
@@ -31,5 +24,3 @@ var App = React.createClass({
   }
 
 });
-
-module.exports = App;

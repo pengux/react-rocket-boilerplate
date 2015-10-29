@@ -1,18 +1,16 @@
-'use strict';
+import React from 'react';
+import TodoActions from './actions';
 
-var React = require('react/addons');
-var TodoActions = require('./actions');
+export default React.createClass({
 
-var TodoForm = React.createClass({
-
-	create: function(e) {
+	create(e) {
 		e.preventDefault();
-		var task = this.refs.newTask.getDOMNode().value;
+		var task = this.refs.newTask.value;
 
 		TodoActions.create({"name": task});
 	},
 
-	render: function() {
+	render() {
 		return (
 			<form onSubmit={this.create}>
 				<label>
@@ -22,6 +20,6 @@ var TodoForm = React.createClass({
 			</form>
 		);
 	}
+
 });
 
-module.exports = TodoForm;

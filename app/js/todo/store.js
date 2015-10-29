@@ -1,11 +1,9 @@
-'use strict';
+import Reflux from 'reflux';
+import TodoActions from './actions';
 
-var Reflux = require('reflux');
-var TodoActions = require('./actions');
+export default Reflux.createStore({
 
-var TodoStore = Reflux.createStore({
-
-	init: function() {
+	init() {
 		this.todos = [
 			{ name: "Task 1" }
 		];
@@ -15,17 +13,17 @@ var TodoStore = Reflux.createStore({
 		this.listenTo(TodoActions.del, this.onDel);
 	},
 
-	onCreate: function(todo) {
+	onCreate(todo) {
 		this.todos.push(todo);
 
 		this.trigger(this.todos);
 	},
 
-	onList: function() {
+	onList() {
 		this.trigger(this.todos);
 	},
 
-	onDel: function(todo) {
+	onDel(todo) {
 		for(var i = 0; i < this.todos.length; i++) {
 			if(this.todos[i] === todo) {
 				this.todos.splice(i, 1);
@@ -34,6 +32,6 @@ var TodoStore = Reflux.createStore({
 
 		this.trigger(this.todos);
 	}
+
 });
 
-module.exports = TodoStore;

@@ -1,26 +1,20 @@
-'use strict';
+import React from 'react';
+import DocumentTitle from 'react-document-title';
 
-var React         = require('react/addons');
-var DocumentTitle = require('react-document-title');
-
-var NotFoundPage = React.createClass({
+export default React.createClass({
 
   propTypes: {
     currentUser: React.PropTypes.object.isRequired
   },
 
-  render: function() {
+  render() {
     return (
       <DocumentTitle title="404: Not Found">
         <section className="not-found-page">
-
           Page Not Found
-
         </section>
       </DocumentTitle>
     );
   }
 
 });
-
-module.exports = NotFoundPage;
