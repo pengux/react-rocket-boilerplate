@@ -3,10 +3,6 @@ import DocumentTitle from 'react-document-title';
 
 export default React.createClass({
 
-  propTypes: {
-    currentUser: React.PropTypes.object.isRequired
-  },
-
   render() {
     return (
       <DocumentTitle title="404: Not Found">
