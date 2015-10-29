@@ -1,15 +1,13 @@
-'use strict';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Router from 'react-router';
+import routes from './routes';
+import createBrowserHistory from 'history/lib/createBrowserHistory';
 
-var React  = require('react/addons');
-var Router = require('react-router');
-
-var routes = require('./routes');
-
-if ( process.env.NODE_ENV !== 'production' ) {
+if(process.env.NODE_ENV !== 'production') {
   // Enable React devtools
   window.React = React;
 }
 
-Router.run(routes, Router.HistoryLocation, function(Handler, state) {
-  React.render(<Handler params={state.params} query={state.query} />, document.getElementById('app'));
-});
+let history = createBrowserHistory();
+ReactDOM.render(<Router history={history}>{routes}</Router>, document.getElementById('app'));

@@ -1,19 +1,13 @@
-'use strict';
+import React from 'react';
 
-var React = require('react/addons');
+export default React.createClass({
 
-var Header = React.createClass({
-
-  render: function() {
+  render() {
     return (
       <header>
-
         Header
-
       </header>
     );
   }
 
 });
-
-module.exports = Header;

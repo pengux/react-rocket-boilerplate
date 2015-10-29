@@ -1,41 +1,39 @@
-'use strict';
+import React from 'react';
+import Reflux from 'reflux';
+import TodoStore from './store';
+import TodoActions from './actions';
 
-var React = require('react/addons');
-var Reflux = require('reflux');
-var TodoStore = require('./store');
-var TodoActions = require('./actions');
-
-var TodoList = React.createClass({
+export default React.createClass({
 
 	mixins: [Reflux.ListenerMixin],
 
-	getInitialState: function() {
+	getInitialState() {
 		return {
 			todos: []
 		};
 	},
 
-	componentWillMount: function() {
+	componentWillMount() {
 		this.listenTo(TodoStore, this.onTodoChange);
 		TodoActions.list();
 	},
 
-	onTodoChange: function(todos) {
+	onTodoChange(todos) {
 		this.setState({
 			todos: todos
 		});
 	},
 
-	del: function(todo) {
+	del(todo) {
 		TodoActions.del(todo);
 	},
 
-	render: function() {
+	render() {
 		return (
 			<ul>
-				{this.state.todos.map(function(todo) {
+				{this.state.todos.map(function(todo, index) {
 					return (
-						<li>
+						<li key={index}>
 							{todo.name}
 							<a href="#" className="todo-del" onClick={this.del.bind(this, todo)}>Delete</a>
 						</li>
@@ -47,4 +45,3 @@ var TodoList = React.createClass({
 
 });
 
-module.exports = TodoList;

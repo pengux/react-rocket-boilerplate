@@ -1,12 +1,11 @@
-'use strict';
+import React from 'react';
+import DocumentTitle from 'react-document-title';
+import TodoList from '../todo/list';
+import TodoForm from '../todo/form';
 
-var React = require('react/addons');
-var DocumentTitle   = require('react-document-title');
-var TodoList = require('../todo/list');
-var TodoForm = require('../todo/form');
+export default React.createClass({
 
-var Start = React.createClass({
-	render: function() {
+	render() {
 		return (
 			<DocumentTitle title="Start page">
 				<section>
@@ -16,6 +15,6 @@ var Start = React.createClass({
 			</DocumentTitle>
 		);
 	}
+
 });
 
-module.exports = Start;

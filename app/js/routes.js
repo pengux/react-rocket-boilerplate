@@ -1,23 +1,13 @@
-'use strict';
+import React from 'react';
+import App from './app';
+import Start from './page/start';
+import NotFound from './page/not-found';
+import { Router, Route, IndexRoute } from 'react-router';
 
-var React         = require('react/addons');
-var Router        = require('react-router');
-var Route         = Router.Route;
-var NotFoundRoute = Router.NotFoundRoute;
-var DefaultRoute  = Router.DefaultRoute;
-
-var App           = require('./app');
-var Start         = require('./page/start');
-var NotFound      = require('./page/not-found');
-
-module.exports = (
-  <Route handler={App} path='/'>
-
-    <DefaultRoute handler={Start} />
-
-    <Route name='Start' path='/' handler={Start} />
-
-    <NotFoundRoute handler={NotFound} />
-
+export default (
+  <Route component={App} path='/'>
+    <IndexRoute component={Start} />
+    <Route name='Start' path='/' component={Start} />
+    <Route path="*" component={NotFound} />
   </Route>
 );
