@@ -67,14 +67,7 @@ RefluxJS is a "simple library for unidirectional dataflow architecture inspired 
 
 "The pattern is composed of actions and data stores, where actions initiate new data to pass through data stores before coming back to the view components again. If a view component has an event that needs to make a change in the application's data stores, they need to do so by signalling to the stores through the actions available."
 
-The RefluxJS files are also all locationed within `/app/js`, structured in the following manner:
-
-```
-/actions
-  - CurrentUserActions.js (Possible actions relevant to the current user. i.e. `checkAuth`, `login`, and `logout`.)
-/stores
-  - CurrentUserStore.js (Responsible for storing the current user data, while listening to any `CurrentUserActions`.)
-```
+The RefluxJS files are also all locationed within `/app/js`, and named as store.js or actions.js in each module folder. Feel free to rename them according to your need.
 
 Each action or store you add to your project should be placed in the appropriate directory, and required in the necessary files. The necessary logic to trigger actions and listen to stores should also be added.
 
@@ -82,18 +75,17 @@ Each action or store you add to your project should be placed in the appropriate
 
 ### React Router
 
-React Router is a "complete routing library for React." It uses the JSX syntax to easily define route URLs and handlers, providing an easy-to-understand architecture and thus makes it easy to add new pages and routes.
+React Router is a "complete routing library for React." It uses the JSX syntax to easily define route URLs and handlers, providing an easy-to-understand architecture and thus makes it easy to add new components and routes.
 
 The relevant files are all located within `/app/js`, structured in the following manner:
 
 ```
-/pages (Each individual page to handle the defined routes and be rendered inside the app.)
-App.js (The main component which is rendered to the DOM and responsible for rendering the current page.)
+app.js (The main component which is rendered to the DOM and responsible for rendering the current page.)
 index.js (The main javascript file watched by Browserify, requiring the app and running the router.)
-Routes.js (Defines the routing structure, along with each individual route path and handler.)
+routes.js (Defines the routing structure, along with each individual route path and handler.)
 ```
 
-Any pages added to your project should be placed within the `app/js/pages` directory, and be required and assigned to a route inside `Routes.js`. If more complex nesting is required, any page can have a new `RouteHandler` as a child component.
+Any component added to your project should be placed within the appropiate module directory, and be required and assigned to a route inside `Routes.js`.
 
 ---
 
@@ -123,7 +115,6 @@ A number of build processes are automatically run on all of our Javascript files
 
 - **Browserify:** The main build process run on any Javascript files. This processes any of the `require('module')` statements, compiling the files as necessary.
 - **Babelify:** This uses [babelJS](https://babeljs.io/) to provide support for ES6+ features, while simultaneously parsing and converting any existing JSX.
-- **Debowerify:** Parses `require()` statements in your code, mapping them to `bower_components` when necessary. This allows you to use and include bower components just as you would npm modules.
 - **Uglifyify:** This will minify the file created by Browserify and ngAnnotate.
 
 The resulting file (`main.js`) is placed inside the directory `/build/js/`.
